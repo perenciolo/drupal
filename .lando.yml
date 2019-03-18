@@ -1,0 +1,22 @@
+name: lando-d-8
+recipe: drupal8
+config:
+  webroot: .
+services:
+  node:
+    type: node:10
+    build:
+      - npm install
+      - webpack
+      - yarn
+    globals:
+      webpack-cli: latest
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+  webpack:
+    service: node
+  yarn:
+    service: node
