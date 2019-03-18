@@ -4,6 +4,8 @@ var sass = require('gulp-sass');
 var postcssPresetEnv = require('postcss-preset-env');
 var notify = require('gulp-notify');
 var livereload = require('gulp-livereload');
+const cleanCSS = require('gulp-clean-css');
+const rename = require('gulp-rename');
 
 const base = {
   src: './themes/gus_gulp/',
@@ -31,16 +33,32 @@ const folders = {
 
 gulp.task('styles', function () {
   var processors = [
-    postcssPresetEnv()
+    postcssPresetEnv({
+      browsers: 'last 2 versions',
+      autoprefixer: {
+        grid: true
+      }
+    })
   ];
 
   return gulp.src(`${folders.styles.src}style.scss`)
     .pipe(sass())
     .pipe(postcss(processors))
+    .pipe(cleanCSS({
+      compatibility: 'ie8'
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(notify("success"))
     .pipe(gulp.dest(`${folders.styles.dest}`))
     .pipe(livereload());
 });
+
+/**
+ * Minify CSS
+ */
+
 
 /*gulp.task('watch:styles', function () {
   livereload.listen();

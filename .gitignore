@@ -43,3 +43,5 @@ sites/simpletest
 
 /node_modules/
 *.bundle.*
+*.min.*
+*.lock
