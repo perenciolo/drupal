@@ -1,0 +1,5 @@
+name: 'Blackowl delivery App Client Content-type'
+type: module
+description: 'Defines client content-type'
+core: 8.x
+package: bod_client

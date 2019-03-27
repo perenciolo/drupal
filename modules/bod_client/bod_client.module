@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements  hook_entity_presave().
+ */
+function bod_client_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
+{
+    if ($entity->getEntityTypeId() === 'node') {
+        $name = $entity->get('field_bod_client_name')->getValue()[0]['value'];
+        if ($name !== '' && $name !== null) {
+            $entity->setTitle($name);
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<?php
+
+/* *
+ * Implements hook_entity_presave
+ * /
+function cpf_entity_bundle_field_info_alter(
+    &$fields,
+    \Drupal\Core\Entity\EntityTypeInterface $entity_type
+) {
+    if ($entity_type->id() === 'node') {
+        dump($fields);die;
+        /*
+        if ($title) {
+            $title->addViolation(
+                'CpfConstraint',
+                [\Drupal::service('cpf')->isValid('098')]
+            );
+        }
+    }
+}
+*/
+
+/*
+ * Implements hook_entity_presave
+ * /
+function cpf_entity_presave(Drupal\Core\Entity\EntityInterface $entity)
+{
+if ($entity->getEntityTypeId() === 'node') {
+$entity->get('field_bod_client_cpf')->addConstraint('CpfConstraint');
+}
+/*
+if ($entity->get('field_bod_client_cpf')) {
+
+$entity->get('field_bod_client_cpf')->addConstraint('CpfConstraint');
+}
+if ($entity->getEntityTypeId() === 'node') {
+dump();
+die;
+}
+
+}*/
